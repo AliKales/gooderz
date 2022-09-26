@@ -9,13 +9,14 @@ class CAppBar extends AppBar {
     VoidCallback? onBackIconClick,
     Widget? leading,
     List<Widget>? actions,
+    Color? backgroundColor,
   })  : assert((leading == null || onBackIconClick == null),
             "Either 'leading' or 'onBackIconClick' must be null"),
         super(
           actions: actions,
           centerTitle: true,
           elevation: 0,
-          backgroundColor: Colors.transparent,
+          backgroundColor: backgroundColor ?? Colors.transparent,
           title: titleWidget ??
               Text(
                 title ?? "",

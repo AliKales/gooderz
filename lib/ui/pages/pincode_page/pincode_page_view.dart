@@ -13,7 +13,7 @@ class PinCodePage extends StatelessWidget with CustomNavigation {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors().orange,
+      backgroundColor: AppColors().white,
       appBar: _appBar(context),
       body: _mainWidgetGrey(context),
       bottomNavigationBar: ButtonBottom(
@@ -24,28 +24,37 @@ class PinCodePage extends StatelessWidget with CustomNavigation {
     );
   }
 
-  Container _mainWidgetGrey(BuildContext context) {
-    return Container(
-      margin: CustomPadding.onlyTop(PaddingValues.medium),
-      width: double.maxFinite,
-      decoration: BoxDecoration(
-        color: AppColors().offWhite,
-        borderRadius: CustomRadius.onlyTopRadius(RadiusValues.large),
-      ),
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            _title(context,
-                "CREATE A PIN CODE WITH 6 NUMBERS TO SAFEGUARD YOUR ACCOUNT"),
-            _textField(AppColors().white, "Enter Password"),
-            _customSpace(context),
-            _textField(AppColors().white, "Re-enter Password"),
-            SizedBox(height: 0.03.toDynamicHeight(context)),
-            _mainWidgetWhite(context),
-          ],
+  Widget _mainWidgetGrey(BuildContext context) {
+    return Stack(
+      children: [
+        Container(
+          color: AppColors().orange,
+          width: double.maxFinite,
+          height: context.dynamicHeight(0.2),
         ),
-      ),
+        Container(
+          margin: CustomPadding.onlyTop(PaddingValues.medium),
+          width: double.maxFinite,
+          decoration: BoxDecoration(
+            color: AppColors().offWhite,
+            borderRadius: CustomRadius.onlyTopRadius(RadiusValues.large),
+          ),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                _title(context,
+                    "CREATE A PIN CODE WITH 6 NUMBERS TO SAFEGUARD YOUR ACCOUNT"),
+                _textField(AppColors().white, "Enter Password"),
+                _customSpace(context),
+                _textField(AppColors().white, "Re-enter Password"),
+                SizedBox(height: 0.03.toDynamicHeight(context)),
+                _mainWidgetWhite(context),
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 
@@ -62,11 +71,6 @@ class PinCodePage extends StatelessWidget with CustomNavigation {
           _textField(AppColors().offWhite, "Full name"),
           _customSpace(context),
           _textField(AppColors().offWhite, "Your email"),
-          Container(
-            width: double.maxFinite,
-            height: 0.07.toDynamicHeight(context),
-            color: AppColors().white,
-          ),
         ],
       ),
     );
@@ -102,6 +106,7 @@ class PinCodePage extends StatelessWidget with CustomNavigation {
         back(context);
       },
       title: "Create an account",
+      backgroundColor: AppColors().orange,
     );
   }
 }
